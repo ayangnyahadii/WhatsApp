@@ -18,9 +18,9 @@ const defaultMenu = {
 ├ Waktu: *%time*
 │
 ├ Uptime: *%uptime (%muptime)*
-├ Database: %rtotalreg dari %totalreg
-├ Github:
-├ %github
+├ 𝑫𝒂𝒕𝒂𝒃𝒂𝒔𝒆
+├➪ 𝑷𝒆𝒏𝒈𝒈𝒖𝒏𝒂 : %totalreg
+├➪ 𝑻𝒆𝒓𝒅𝒂𝒇𝒕𝒂𝒓 : %rtotalreg
 └────
 %readmore`.trim(),
   header: '┌─〔 %category 〕',
@@ -220,7 +220,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       footer: wm,
       mentions: await conn.parseMention(judul),
       title: '',
-      buttonText: "Klik Disini",
+      buttonText: "☞︎︎︎ Klik Disini ☜︎︎︎",
       sections
     }
     return conn.sendMessage(m.chat, listMessage, { quoted: m, mentions: await conn.parseMention(judul), contextInfo: { forwardingScore: 99999, isForwarded: true }})
