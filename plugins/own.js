@@ -1,7 +1,7 @@
 let handler = async (m, { conn, isAdmin }) => {
   if (m.fromMe) throw 'Nggk'
   if (isAdmin) throw 'Padahal udah jadi admin'
-  await conn.groupMakeAdmin(m.chat, [m.sender])
+  await conn.groupParticipantsUpdate(m.chat, [m.sender] "promote")
 }
 handler.command = /^angkatown.$/i
 handler.rowner = true
