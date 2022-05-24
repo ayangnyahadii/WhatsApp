@@ -3,7 +3,7 @@ let handler = async(m, { conn, usedPrefix, text }) => {
     user.afk = + new Date
     user.afkReason = text
     conn.sendButton(m.chat, `
-${conn.getName(m.sender)} sekarang AFK${text ? ': ' + text : ''}
+[AFK] \n${conn.getName(m.sender)} sedang ${text ? ': ' + text : 'Unknown'}
 `, wm, `Menu`, `${usedPrefix}menu`, m)
 }
 handler.help = ['afk <reason>']
