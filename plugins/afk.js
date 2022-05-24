@@ -9,5 +9,6 @@ let handler = async(m, { conn, usedPrefix, text }) => {
 handler.help = ['afk <reason>']
 handler.tags = ['main']
 handler.command = /^afk$/i
+handler.register = true
 
 module.exports = handler
