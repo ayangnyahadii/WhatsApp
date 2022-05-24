@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.tekateki[id][0])
         throw false
     }
-    if (!src) src = await (await fetch(global.API('https://raw.githubusercontent.com', '/BochilTeam/database/master/games/tekateki.json'))).json()
+    if (!src) src = await (await fetch(global.API('https://raw.githubusercontent.com', '/ayangnyahadii/database/master/games/tekateki.json'))).json()
     let json = src[Math.floor(Math.random() * src.length)]
     if (!json) throw json
     let caption = ` 
