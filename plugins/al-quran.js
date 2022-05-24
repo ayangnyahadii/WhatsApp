@@ -15,7 +15,7 @@ ${json.result.data.translation.id}
 ( Q.S ${json.result.data.surah.name.transliteration.id} : ${json.result.data.number.inSurah} )
 `.trim()
     m.reply(mes)
-    conn.sendFile(m.chat, json.result.data.audio.primary, 'audio.mp3', '', m, 0, { mimetype: 'audio/mp4' })
+    await conn.sendFile(m.chat, json.result.data.audio.primary, 'audio.mp3', '', m, 0, { mimetype: 'audio/mp4' })
 }
 handler.help = ['alquran <114> <1>']
 handler.tags = ['quran']
