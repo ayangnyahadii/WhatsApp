@@ -17,6 +17,7 @@ handler.help = ['sendkontak']
 handler.tags = 'anonymous'
 handler.command = /^(sendkontak|kirimkontak)$/i
 handler.private = true
+handler.premium = true
 handler.fail = null
 
 module.exports = handler
