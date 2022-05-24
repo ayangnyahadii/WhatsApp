@@ -14,7 +14,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 *Link:* ${result.mp3}
 `.trim()
     conn.sendFile(m.chat, result.img, 'error.jpg', pesan, m, false, { thumbnail: Buffer.alloc(0) })
-    conn.sendFile(m.chat, result.mp3, 'error.mp3', '', m, false, { mimetype: 'audio/mp4' })
+    conn.sendFile(m.chat, mp3_url, 'error.mp3', '', m, false, { mimetype: 'audio/mp4' })
 }
 
 handler.help = ['joox'].map(v => v + ' <judul>')
