@@ -6,7 +6,7 @@ async function handler(m, { command, usedPrefix }) {
     this.anonymous = this.anonymous ? this.anonymous : {}
     switch (command) {
         //case 'next':
-        //case 'skip':
+        case 'skip':
         case 'leave': {
             let room = Object.values(this.anonymous).find(room => room.check(m.sender))
             if (!room) {
