@@ -1,35 +1,32 @@
-let fetch = require('node-fetch')
-
+const fetch = require('node-fetch')
 let timeout = 120000
 let poin = 500
 let handler = async (m, { conn, usedPrefix }) => {
     conn.siapakahaku = conn.siapakahaku ? conn.siapakahaku : {}
     let id = m.chat
     if (id in conn.siapakahaku) {
-        conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.siapakahaku[id][0])
+        await conn.sendButton(m.chat, 'Masih ada soal belum terjawab di chat ini', wm, 'Bantuan', usedPrefix + 'ao', conn.siapakahaku[id][0])
         throw false
     }
     let src = await (await fetch('https://raw.githubusercontent.com/ayangnyahadii/database/master/games/siapakahaku.json')).json()
     let json = src[Math.floor(Math.random() * src.length)]
     let caption = `
 ${json.soal}
-
 Timeout *${(timeout / 1000).toFixed(2)} detik*
-Ketik ${usedPrefix}who untuk bantuan
+Ketik ${usedPrefix}ao untuk bantuan
 Bonus: ${poin} XP
-`.trim()
+    `.trim()
     conn.siapakahaku[id] = [
-        await conn.sendButton(m.chat, caption, 'Games ×͜×', 'Bantuan', '.who'),
+        await conn.sendButtonLoc(m.chat, fla + 'Aku Siapa?', caption, wm, 'Bantuan', usedPrefix + 'ao', m),
         json, poin,
         setTimeout(async () => {
-            if (conn.siapakahaku[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*`, 'Games ×͜×', 'Siapakah Aku', '.siapaaku')
-            delete conn.siapakahaku[id]
+            if (conn.siapakahaku[id]) await conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}* \n *${json.deskripsi}*`, wm, 'Aku Siapa?', '.siapaaku', conn.siaakahaku[id][0])
+            delete conn.siapkahaku[id]
         }, timeout)
     ]
 }
-handler.help = ['siapakahaku']
+handler.help = ['siapaaku']
 handler.tags = ['game']
 handler.command = /^siapa(kah)?aku/i
-handler.register = true
 
 module.exports = handler
