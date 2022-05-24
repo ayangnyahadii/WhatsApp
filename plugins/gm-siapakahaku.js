@@ -9,7 +9,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.reply(m.chat, 'Masih ada soal belum terjawab di chat ini', conn.siapakahaku[id][0])
         throw false
     }
-    let src = await (await fetch('https://raw.githubusercontent.com/BochilTeam/database/master/games/siapakahaku.json')).json()
+    let src = await (await fetch('https://raw.githubusercontent.com/ayangnyahadii/database/master/games/siapakahaku.json')).json()
     let json = src[Math.floor(Math.random() * src.length)]
     let caption = `
 ${json.soal}
