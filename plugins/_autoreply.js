@@ -23,10 +23,10 @@ handler.all = async function (m) {
     // ketika ada yang invite/kirim link grup di chat pribadi
     if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Buka tautan ini')) && !m.isBaileys && !m.isGroup) {
         this.sendButton(m.chat, `┌「 *Undang Bot ke Grup* 」
-├ 1 Bulan / Rp 5,000
-├ 2 Bulan / Rp 10,000
-├ 6 Bulan / Rp 25,000
-├ Permanent Rp 50,000
+├ 1  Bulan  / Rp 15,000
+├ 2  Bulan  / Rp 25,000
+├ 6  Bulan  / Rp 50,000
+├ Prem 1bln / Rp 10,000
 └─────
 `.trim(), wm, 'Pemilik Bot', '.owner', m)
     }
@@ -34,7 +34,7 @@ handler.all = async function (m) {
     if (m.isGroup) {
     if (m.fromMe) return
     if (m.mentionedJid.includes(this.user.jid) && m.isGroup) {
-    	await this.send2Button(m.chat, m.msg.contextInfo.expiration == 604800 ? '\n\nketik *.ephe* untuk matiin pesan sementaranya, biar tombolnya bisa dipake' : 'uhm.. iya ada apa?', wm, `${isBanned ? 'UNBAN' : 'MENU'}`, `${isBanned ? '.unban' : '.?'}`, `${!m.isGroup ? 'DONASI' : isBanned ? 'UNBAN' : 'BAN'}`, `${!m.isGroup ? '.donasi' : isBanned ? '.unban' : '.ban'}`, m)
+    	await this.send2Button(m.chat, m.msg.contextInfo.expiration == 604800 ? '\n\nketik *.ephe* untuk matiin pesan sementaranya, biar tombolnya bisa dipake' : 'kenapa tag saya?ada yg bisa saya bantu?', wm, `${isBanned ? 'UNBAN' : 'MENU'}`, `${isBanned ? '.unban' : '.?'}`, `${!m.isGroup ? 'DONASI' : isBanned ? 'UNBAN' : 'BAN'}`, `${!m.isGroup ? '.donasi' : isBanned ? '.unban' : '.ban'}`, m)
     }
 }
     
