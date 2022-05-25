@@ -3,7 +3,7 @@ let handler = m => m
 let linkRegex = /chat.whatsapp.com/i
 
 handler.before = function(m, { user, isAdmin, isBotAdmin, groupMetadata }) {
-  if (m.isBaileys && m.fromMe) return false
+  if (m.isBaileys && m.fromMe) return true
   let participants = m.isGroup ? groupMetadata.participants : []
   let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
   if (!(bot.isAdmin || bot.isSuperAdmin)) return false
@@ -20,7 +20,7 @@ handler.before = function(m, { user, isAdmin, isBotAdmin, groupMetadata }) {
   } else if (chat.antiLink && link && isAdmin) {
     return m.reply("KAMU TIDAK AKAN DIKICK KARENA KAMU ADMIN")
   }
+  return true
 }
-handler.group = true
 
 module.exports = handler
