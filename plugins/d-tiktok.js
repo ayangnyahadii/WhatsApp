@@ -7,6 +7,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     conn.sendFile(m.chat, url, 'tiktok.mp4', `
 *Nickname:* ${nickname}
 *Description:* ${description}
+
+Downloaded By WhatsApp Bot
 `.trim(), m)
 }
 handler.help = ['tiktok'].map(v => v + ' <url>')
