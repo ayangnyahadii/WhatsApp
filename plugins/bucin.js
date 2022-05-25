@@ -8,6 +8,7 @@ let handler  = async (m) => {
 handler.help = ['bucin']
 handler.tags = ['quotes']
 handler.command = /^(bucin)$/i
+handler.register = true
 
 module.exports = handler
 
