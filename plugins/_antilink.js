@@ -1,22 +1,26 @@
 let handler = m => m
 
-let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
-handler.before = async function (m, { isAdmin, isBotAdmin }) {
-  if (m.isBaileys && m.fromMe) return true
-  let chat = global.db.data.chats[m.chat]
-  let isGroupLink = linkRegex.exec(m.text)
+let linkRegex = /chat.whatsapp.com/i
 
-  if (chat.antiLink && isGroupLink && !isAdmin && !m.isBaileys && m.isGroup) {
-    let thisGroup = `https://chat.whatsapp.com/${await this.groupInviteCode(m.chat)}`
-    if (m.text.includes(thisGroup)) throw false // jika link grup itu sendiri gak dikick
-      if (!isBotAdmin) m.reply(` *「 ANTILINK 」* ${isAdmin ? "Admin mah bebas ygy :'v" : `\n\nlink group terdeteksi dan ${global.namabot} bukan admin jadi tidak bisa ngekick!`}`)
-    if (isBotAdmin) {
-      m.reply(` *「 ANTILINK 」* \n\nLink Group Terdeteksi, Group Ini Mengaktifkan Fitur Antilink, Maaf Saya Akan kick Kamu Karna Kamu Mengirim Link.. OTEWEEEE KICKK!!`.trim())
-      await this.delay(500)
-      await this.groupParticipantsUpdate(m.chat, [m.sender], "remove")
-    }
+handler.before = function(m, { user, isAdmin, isBotAdmin, groupMetadata }) {
+  if (m.isBaileys && m.fromMe) return false
+  let participants = m.isGroup ? groupMetadata.participants : []
+  let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {}
+  if (!(bot.isAdmin || bot.isSuperAdmin)) return false
+  let chat = global.db.data.chats[m.chat]
+  let name = this.getName(m.sender)
+  let link = linkRegex.exec(m.text)
+  let aizin = m.text.includes("#izin") || m.text.includes("#Izin")
+
+  if (chat.antiLink && link && !aizin && !isAdmin) {
+    m.reply(`*「 ANTI LINK 」*\n\nTerdeteksi *${name}* telah mengirim link group!\n\nMaaf Kamu akan dikick dari grup ini!`)
+    this.groupRemove(m.chat, [m.sender])
+  } else if ( chat.antiLink && link && aizin && !isAdmin) {
+    this.sendButton( m.chat, `KAMU TIDAK AKAN DIKICK KARENA KAMU MEMAKAI TANDA #izin`, `Antilink`, `Oke`, `ok`, m)
+  } else if (chat.antiLink && link && isAdmin) {
+    return m.reply("KAMU TIDAK AKAN DIKICK KARENA KAMU ADMIN")
   }
-  return true
 }
+handler.group = true
 
 module.exports = handler
