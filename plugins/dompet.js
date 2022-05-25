@@ -16,7 +16,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     let str = `
 ╭───ꕥ *PROFILE* ꕥ───✾
 │•> Name: ${username}
-│•> Premium: ${premium ? `${conn.msToDate(premiumTime - new Date() * 1)}` : 'Gratisan'}
+│•> Premium: ${premium ? `PREMIUM NI BOS!!!\n│•> ${conn.msToDate(premiumTime - new Date() * 1)}` : 'JELEG GRATISAN'}
 │•> Number: ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
 │•> Umur: *${age == '-1' ? 'Belum Daftar' : age}*
 │•> Link: wa.me/${m.sender.split`@`[0]}
@@ -38,6 +38,6 @@ let handler = async (m, { conn, usedPrefix }) => {
 handler.help = ['dompet', 'atm']
 handler.tags = ['rpg']
 handler.command = /^(dompet|atm|pp|profile|profil|propil)$/i
-handler.register = false
+handler.register = true
 module.exports = handler
 
