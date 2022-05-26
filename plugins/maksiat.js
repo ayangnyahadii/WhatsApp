@@ -9,7 +9,7 @@ handler.help = ['maksiat']
 handler.tags = ['premium']
 handler.command = /^(maksiat)$/i
 handler.register = true
-handerl.premium = true
+handler.premium = true
 
 module.exports = handler
 
