@@ -10,6 +10,7 @@ handler.tags = ['premium']
 handler.command = /^(maksiat)$/i
 handler.register = true
 handler.premium = true
+handler.private = true
 
 module.exports = handler
 
