@@ -4,7 +4,7 @@
 * mending lu tambahin deh nama lu jangan hapus kreditnya
 **/
 
-let handler = async (m, { conn, usedPrefix }) => {
+let handler = async (m, { conn }) => {
 conn.sendButton(m.chat, `*BIG THANKS TO*
 
 Nurutomo: 
@@ -31,7 +31,7 @@ Family-Md
 https://github.com/fokusdotid/family-md
 hdiiofficial:
 https://trakteer.id/hdiiofficial
-`.trim(), wm, 'Menu', '.menu', global.ftroli)
+`.trim(), wm, 'SOURCE CODE', '.sc', global.ftroli)
 handler.help = ['tqto']
 handler.tags = ['info']
 handler.command = /^(credits?|thanks?to|tqto|ttq)$/i
