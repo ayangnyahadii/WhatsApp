@@ -28,9 +28,10 @@ https://github.com/irwanx
 Rasel:
 https://github.com/raselcomel
 Family-Md
+https://github.com/fokusdotid/family-md
 hdiiofficial:
 https://trakteer.id/hdiiofficial
-`.trim(), wm, 'Menu', usedPrefix + 'menu', m)
+`.trim(), wm, 'Menu', '.menu', global.ftroli)
 handler.help = ['tqto']
 handler.tags = ['info']
 handler.command = /^(credits?|thanks?to|tqto|ttq)$/i
