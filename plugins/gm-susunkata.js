@@ -9,7 +9,7 @@ let handler = async (m, { conn, usedPrefix }) => {
         conn.sendButton(m.chat, 'Masih ada soal belum terjawab di chat ini', wm, 'Bantuan', usedPrefix + 'suka', conn.susunkata[id][0])
         throw false
     }
-    let res = JSON.parse(fs.readFileSync('./api/susunkata.json'))
+    let res = await (await fetch('https://raw.githubusercontent.com/ayangnyahadii/database/master/games/susunkata.json')).json()
     let random = Math.floor(Math.random() * res.length)
     let json = res[random]
     let caption = `
