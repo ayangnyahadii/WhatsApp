@@ -8,7 +8,7 @@ async function handler(m) {
         this.sendButton(m.chat, 'Masih ada kuis yang belum terjawab di chat ini', wm, 'NYERAH', 'surrender', this.game[id].msg)
         throw false
     }
-    let src = JSON.parse(fs.readFileSync(`./api/family.json`))
+    let src = await (await fetch('https://raw.githubusercontent.com/ayangnyahadii/database/master/games/family100.json')).json()
     let json = src[Math.floor(Math.random() * src.length)]
     let caption = `
 *Soal:* ${json.soal}
