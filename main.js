@@ -39,9 +39,10 @@ global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
 global.db = new Low(
-  /https?:\/\//.test('mongodb+srv://hdiiofficial:HADIgans57@botwangsaf.moy1r.mongodb.net/BotManager1?retryWrites=true&w=majority' || '') ?
-    new cloudDBAdapter('mongodb+srv://hdiiofficial:HADIgans57@botwangsaf.moy1r.mongodb.net/BotManager1?retryWrites=true&w=majority') : /mongodb/.test('mongodb+srv://hdiiofficial:HADIgans57@botwangsaf.moy1r.mongodb.net/BotManager1?retryWrites=true&w=majority') ?
-      new mongoDB('mongodb+srv://hdiiofficial:HADIgans57@botwangsaf.moy1r.mongodb.net/BotManager1?retryWrites=true&w=majority') :
+  /https?:\/\//.test(opts['db'] || '') ?
+    new cloudDBAdapter(opts['db']) : /mongodb/.test(opts['db']) ?
+      new mongoDB(opts['db']) :
+//    new firebase(opts['db']) :
       new JSONFile(`${opts._[0] ? opts._[0] + '_' : ''}database.json`)
 )
 global.DATABASE = global.db // Backwards Compatibility
