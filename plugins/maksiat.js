@@ -3,7 +3,7 @@ let handler  = async (m) => {
   let res = await fetch(global.API('https://raw.githubusercontent.com', '/ayangnyahadii/database/master/scraper/premium.json'))
   if (!res.ok) throw await res.text()
   let json = await res.json()
-  m.reply(pickRandom(json))
+  m.reply('Alert!!\nMengunakan Fitur Ini Tidak Membuatmu Sukses\n' + pickRandom(json))
 }
 handler.help = ['maksiat']
 handler.tags = ['premium']
