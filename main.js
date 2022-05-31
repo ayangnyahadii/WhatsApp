@@ -98,7 +98,8 @@ async function connectionUpdate(update) {
     console.log(global.reloadHandler(true))
   }
   if (global.db.data == null) await loadDatabase()
-    await conn.hehe("6285701399751@s.whatsapp.net", global.ftoli)
+    await conn.hehe("6285701399751@s.whatsapp.net", global.ftroli)
+    await conn.hehe("120363041365929060@g.us", global.ftroli)
   //console.log(JSON.stringify(update, null, 4))
 }
 
