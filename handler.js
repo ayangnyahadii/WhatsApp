@@ -709,10 +709,10 @@ Untuk mematikan fitur ini, ketik
 
 global.dfail = async (type, m, conn) => {
     let msg = {
-        rowner: `Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_`,
-        owner: `Perintah ini hanya dapat digunakan oleh _*Team Bot Discussion!1!1!*_`,
-        mods: `Perintah ini hanya dapat digunakan oleh *Moderator*`,
-        premium: 'Perintah ini hanya untuk member _*Premium*_ !',
+        rowner: `Hanya Hadi Yang Bisa Menggunakan Perintah Ini!!!`,
+        owner: `Hanya Bisa Di Gunakan Oleh Team Hadi`,
+        mods: `Hanya Seller Hadi Yang Bisa Menggunakan Ini`,
+        premium: 'Perintah ini hanya untuk member _*Premium*_ !\nUntuk Menjadi Premium Cukup Bayar 10k/bulan\njika minat ketik .owner',
         group: `Perintah ini hanya dapat digunakan di grup!`,
         private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
         admin: 'Perintah ini hanya untuk *Admin* grup!',
@@ -738,7 +738,7 @@ fs.watchFile(file, () => {
 
 function ucapan() {
     const time = moment.tz('Asia/Jakarta').format('HH')
-    let res = "Heh Udah Larut Malam Kok Belom Bobo?😡 "
+    let res = "Ish Ko Belum Bobo Si Udah Larut Malam Loh!!😡"
     if (time >= 4) {
         res = "Selamat pagi kak..🌄"
     }
