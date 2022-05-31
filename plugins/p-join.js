@@ -58,7 +58,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isMods, isOwner, isRO
                     m.reply(`@${m.sender.split`@`[0]} telah menambahkan ${conn.user.name} ke ${await conn.getName(res)} jid: ${res}, bot akan keluar dalam waktu: ${msToDate(global.db.data.chats[res].expired - now)}`.trim(), data.jid, { mentions: [m.sender] })
                 }
             await conn.send2ButtonImg(res, await(await fetch(img)).buffer(), `𝚑𝚍𝚒𝚒𝚘𝚏𝚏𝚒𝚌𝚒𝚊𝚕 adalah bot whatsapp yang dibangun dengan Nodejs, saya diundang oleh @${m.sender.split(`@`)[0]}\n\nKetik ${usedPrefix}menu untuk melihat daftar perintah\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`.trim(), wm, 'Menu', usedPrefix + `menu`, 'Owner', usedPrefix + `owner`, ftroli, { mentions: [m.sender] })
-            conn.sendButton("120363041365929060@g.us", `Bot di tambahkan ke ${res} oleh @${m.sender.split`@`[0]} selama ${msToDate(global.db.chats[res].expired - now)}`.trim(), 'LAPORAN JOIN KE GROUP', 'OK', 'OK', global.ftroli)
+            await conn.sendButton("120363041365929060@g.us", `Bot di tambahkan ke ${res} oleh @${m.sender.split`@`[0]} selama ${msToDate(global.db.chats[res].expired - now)}`.trim(), 'LAPORAN JOIN KE GROUP', 'OK', 'OK', global.ftroli)
         })
     }
 }
