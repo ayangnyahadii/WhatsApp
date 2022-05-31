@@ -1,4 +1,5 @@
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
+let log = ""
 let fetch = require('node-fetch')
 
 let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isROwner}) => {
@@ -7,7 +8,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isR
     if (!code) throw 'Link Salah'
     let user = db.data.users[m.sender]
 
-    if (!(isPrems || isOwner || isROwner)) {
+    if (!(isMods || isOwner || isROwner)) {
         if (user.joincount === 0 ) throw `Kamu sudah melebihi token/limit memasukkan bot ke dalam grup!\nsilahkan membeli premium agar bisa memasukan bot kedalam grup lagi!`
         user.joincount -= 1
         let res = await conn.groupAcceptInvite(code)
@@ -24,7 +25,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isR
                     m.reply(`@${m.sender.split`@`[0]} telah menambahkan ${conn.user.name} ke ${await conn.getName(res)}\njid: ${res}, bot akan keluar dalam waktu: ${msToDate(global.db.data.chats[res].expired - now)}`.trim(), data.jid, { mentions: [m.sender] })
                 }
         })
-    } else if ((isOwner || !isPrems || isROwner)) {
+    } else if ((isOwner || !isMods || isROwner)) {
         if (!args[1]) throw `Masukkan format yang benar! format: ${usedPrefix}join <link> <jumlah hari>`
         let res = await conn.groupAcceptInvite(code)
         conn.reply(m.chat, 'Oteeeweehhh...', m).then(async() => { 
@@ -42,7 +43,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isR
             }
             await conn.send2ButtonImg(res, await (await fetch(img)).buffer(), teks, wm, 'Menu', usedPrefix + `menu`, 'Owner', usedPrefix + `owner`, ftroli)
         })
-    } else if ((isPrems || !isOwner || !isROwner)) {
+    } else if ((isMods || !isOwner || !isROwner)) {
         if (user.joincount === 0) throw `Kamu sudah melebihi token/limit memasukkan bot ke dalam group!`
         user.joincount -= 1
         let res = await conn.groupAcceptInvite(code)
@@ -58,13 +59,13 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner, isR
                     m.reply(`@${m.sender.split`@`[0]} telah menambahkan ${conn.user.name} ke ${await conn.getName(res)} jid: ${res}, bot akan keluar dalam waktu: ${msToDate(global.db.data.chats[res].expired - now)}`.trim(), data.jid, { mentions: [m.sender] })
                 }
             await conn.send2ButtonImg(res, await(await fetch(img)).buffer(), `𝚑𝚍𝚒𝚒𝚘𝚏𝚏𝚒𝚌𝚒𝚊𝚕 adalah bot whatsapp yang dibangun dengan Nodejs, saya diundang oleh @${m.sender.split(`@`)[0]}\n\nKetik ${usedPrefix}menu untuk melihat daftar perintah\nBot akan keluar secara otomatis setelah *${msToDate(global.db.data.chats[res].expired - now)}*`.trim(), wm, 'Menu', usedPrefix + `menu`, 'Owner', usedPrefix + `owner`, ftroli, { mentions: [m.sender] })
+            conn.reply(log, `LAPORAN JOIN GROUP\n\nBot di tambahkan ke ${res} oleh @${m.sender.split`@`[0]} selama ${msToDate(global.db.chats[res].expired - now)}`, m)
         })
     }
 }
 handler.help = ['join <link> <time>']
 handler.tags = ['owner']
-handler.limit = true
-handler.premium = true
+handler.mods = true
 handler.command = /^(join)$/i
 
 module.exports = handler
