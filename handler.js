@@ -424,6 +424,7 @@ module.exports = {
                     bot,
                     isROwner,
                     isOwner,
+                    isMods
                     isAdmin,
                     isBotAdmin,
                     isPrems,
@@ -497,7 +498,7 @@ module.exports = {
                     }
                     m.isCommand = true
                     let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // XP Earning per command
-                    if (xp > 200) m.reply('Ngecit -_-') // Hehehe
+                    if (xp > 200) m.reply('ngechit -_-') // Hehehe
                     else m.exp += xp
                     if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
                         this.sendButton(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy*`, wm, 'Buy', '.buy', m)
