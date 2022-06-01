@@ -424,7 +424,7 @@ module.exports = {
                     bot,
                     isROwner,
                     isOwner,
-                    isMods
+                    isMods,
                     isAdmin,
                     isBotAdmin,
                     isPrems,
